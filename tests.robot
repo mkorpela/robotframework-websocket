@@ -7,4 +7,8 @@ Testing
     Start Process   python RfBound.py  shell=yes
     Sleep  1 second
     ping
+    ping
+    ping
+    ping
+    ping
     Terminate All Processes

@@ -3,13 +3,12 @@ from websocket import create_connection
 class RfBound(object):
 
     def ping(self):
-        return "pong"
+        return "pongi"
 
 if __name__ == "__main__":
-    print("HELLO YEAH")
-    ws = create_connection("ws://localhost:8000/")
-    data = ws.recv()
-    if data == "ping":
+    data = "ping"
+    while data == "ping":
+        ws = create_connection("ws://localhost:8000/")
+        data = ws.recv()
         ws.send(RfBound().ping())
-    ws.close()
-    print("NOW IT IS OVER")
+        ws.close()

@@ -34,7 +34,7 @@ if __name__ == "__main__":
 
         def handleMessage(self):
           for client in clients:
-            if client != self:
+            if client != self and not client.closed:
                 client.sendMessage(self.data)
             
         def handleConnected(self):
