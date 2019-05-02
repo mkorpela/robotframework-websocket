@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<body>
+PLAAH
+<script>
+const ws = new WebSocket("ws://127.0.0.1:8000/");
+ws.onmessage = (evt) => { 
+    var received_msg = evt.data;
+    console.log(received_msg);
+    ws.send("WEBAST"+received_msg);
+};
+</script>
+</body>
+</html>

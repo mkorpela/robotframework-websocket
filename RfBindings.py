@@ -1,5 +1,6 @@
 import subprocess
 import time
+from websocket import create_connection
 
 class RfBindings(object):
     ROBOT_LIBRARY_SCOPE = 'TEST SUITE'
@@ -16,14 +17,14 @@ class RfBindings(object):
         self._process.kill()
 
     def get_keyword_names(self):
-        return ['ping', 'pong']
+        return ['ping']
 
     def run_keyword(self, name, args, kwargs):
-        from websocket import create_connection
         ws = create_connection("ws://localhost:8000/")
-        ws.send(name)
-        print(ws.recv())
+        ws.send(name+":"+args[0])
+        result = ws.recv()
         ws.close()
+        return result
 
 
 if __name__ == "__main__":
